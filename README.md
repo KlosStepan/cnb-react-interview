@@ -1,11 +1,17 @@
-# React web application - Currency conversions using CNB API
+# Currency conversions using CNB API
 
-This project is a simple React(TypeScript) application focused on providing a simple conversions between currencies based on Czech National Bank rates. 
+React(TypeScript) web application focused on providing a simple conversions between currencies based on Czech National Bank rates. 
 
-## Nest 2
+## Tech Stack
+The frontend is using these tools:
+- ReactJS(TS) 18.2,
+- Reactstrap.
 
-Lorem ipsum nested 2 (so far)
+## Run
+git pull blabla tbd later
 
-### Nest 3
+## Aplication structure
 
-Lorem ipsum nested 3 (so far)
+## Production TODO
+- Dockerfile
+- Kubernetes Service+Deployment
