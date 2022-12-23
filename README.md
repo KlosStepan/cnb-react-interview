@@ -35,7 +35,7 @@ RUN npm run build
 FROM nginxinc/nginx-unprivileged
 COPY --chown=nginx:nginx --from=build /app/build /usr/share/nginx/html
 ```
-Run to build
+Run to build and push image
 ```zsh
 docker build -t stepanklos/cnb-react-interview .
 docker push stepanklos/cnb-react-interview

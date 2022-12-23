@@ -5,6 +5,10 @@ import { Container, Row } from 'reactstrap';
 import './App.css';
 import axios from 'axios';
 
+import Header from './blocks/Header';
+import Body from './blocks/Body';
+import Footer from './blocks/Footer';
+
 import URLEndPoint from './misc/URLEndPoint';
 import URLProxyPoint from './misc/URLProxyPoint';
 
@@ -44,10 +48,9 @@ function App() {
   return (
     <div className="App">
       <Container>
-        <Row>header</Row>
-        <Row>menu</Row>
-        <Row>body</Row>
-        <Row>footer</Row>
+        <Header />
+        <Body />
+        <Footer />
       </Container>
     </div>
   );
