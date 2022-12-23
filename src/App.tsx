@@ -13,17 +13,19 @@ import URLEndPoint from './misc/URLEndPoint';
 import URLProxyPoint from './misc/URLProxyPoint';
 
 function App() {
+  //Axios GET call via our proxy at cors-proxy.stkl.cz
   async function FetchData() {
     axios.get(URLProxyPoint, { headers: { 'Target-URL': URLEndPoint } })
       .then(function (response) {
         //console.log(response.data)
-        ParseAndStore(response.data);
+        ParseAndStoreData(response.data);
       })
       .catch(function (error) {
         console.log(error);
       })
   }
-  function ParseAndStore(respdata: string) {
+  //Further call - parse and store reponse data
+  function ParseAndStoreData(respdata: string) {
     const result = respdata.split(/\r?\n/);
     const initInfo = result.at(0);
     //info # - initInfo - txt
