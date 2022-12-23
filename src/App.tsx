@@ -8,26 +8,34 @@ import axios from 'axios';
 import URLEndPoint from './misc/URLEndPoint';
 import URLProxyPoint from './misc/URLProxyPoint';
 function App() {
-  function ParseAndPrepareData(respdata: string) {
-    const result = respdata.split(/\r?\n/);
-    //console.log(result.slice(1));
-    //result(1) -> header
-    //res(2+) -> other
-    var currencies = result.slice(2).map((res: string) => {
-      let spl = res.split('|');
-      console.log(spl);
-    })
-    console.log("currencies");
-    console.log(currencies)
-  }
-  useEffect(() => {
+  async function FetchData() {
     axios.get(URLProxyPoint, { headers: { 'Target-URL': URLEndPoint } })
       .then(function (response) {
+        //console.log(response.data)
         ParseAndPrepareData(response.data);
       })
       .catch(function (error) {
         console.log(error);
       })
+  }
+  function ParseAndPrepareData(respdata: string) {
+    const result = respdata.split(/\r?\n/);
+    //console.log(result.slice(1));
+    //result(1) -> header
+    //res(2+) -> other
+    console.log(result);
+    //.slice(2)
+    result.map((res: string) => {
+      let spl = res.split('|');
+      console.log(spl);
+    })
+    //let slicedReducedStuff =
+    //1 datum
+    //2 header
+    //last drop - or if not null to <Line> cmp
+  }
+  useEffect(() => {
+    FetchData();
   }, [])
   return (
     <div className="App">
