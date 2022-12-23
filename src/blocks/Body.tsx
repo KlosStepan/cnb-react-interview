@@ -1,13 +1,14 @@
 import { Row, Table } from 'reactstrap';
 import TRow from '../components/TRow';
 import { useSelector } from 'react-redux';
+import Currency from '../ts/Currency';
 function Body() {
     const date = useSelector((state: any) => state.currencies.date);
     const header = useSelector((state: any) => state.currencies.header);
     const table = useSelector((state: any) => state.currencies.table);
-    return (<Row>
-        <span>|body|</span>
-        <span>{date}</span>
+    return (<Row className={'itemWrapper'}>
+        <span>|BODY|</span>
+        <h1>{date}</h1>
         <Table striped hover>
             <thead>
                 <tr>
@@ -21,7 +22,7 @@ function Body() {
                     <span>x</span> :
                     <span>y</span>*/}
                 {(table.length !== 0) ?
-                    table.map((currency: any) => <TRow currency={currency} />) :
+                    table.map((currency: Currency) => <TRow {...currency} />) :
                     <tr><td>zavne vysledky</td></tr>}
                 {/*<TRow />
                 <TRow />

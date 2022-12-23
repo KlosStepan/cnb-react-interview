@@ -41,7 +41,7 @@ function App() {
     let tableBody = result.map((res: any) => res.split('|'));
     const tableHeader = tableBody.at(0);
     //info #1 - tableHeader - list of 5
-    //console.log(tableHeader);
+    console.log(tableHeader);
     dispatch(setHeader(tableHeader));
     tableBody.shift();
     if (tableBody[tableBody.length - 1].at(0) === "") {
@@ -50,7 +50,15 @@ function App() {
     }
     //info #2 - tableBody - list of [5 strings]
     //console.log(tableBody);
-    dispatch(setBody(tableBody));
+    //dispatch(setBody(tableBody));
+    //assign here {head[0]: bodyrow[0], head[1]: bodyrow[1], head[2]: bodyrow[2], ...}
+    let listOfObjects = [];
+    for (const curr of tableBody) {
+      const obj = curr.reduce((obj: any, cur: any, i: any) => { return { ...obj, [(tableHeader[i]).toLowerCase()]: cur }; }, {});
+      listOfObjects.push(obj);
+    }
+    console.log(listOfObjects);
+    dispatch(setBody(listOfObjects));
   }
   useEffect(() => {
     FetchData();
