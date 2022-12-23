@@ -5,6 +5,7 @@ import {
     Modal, ModalBody, ModalHeader,
     Input, Row, Table
 } from 'reactstrap';
+import TableCurrencies from '../components/TableCurrencies';
 import TRow from '../components/TRow';
 import { useSelector } from 'react-redux';
 import Currency from '../ts/Currency';
@@ -95,20 +96,7 @@ function Body() {
                 </Container>
             </ModalBody>
         </Modal>
-        <Table striped hover>
-            <thead>
-                <tr>
-                    {(header.length !== 0) ?
-                        header.map((hTxt: string) => <th>{hTxt}</th>) :
-                        <td>zadne vysledky</td>}
-                </tr>
-            </thead>
-            <tbody>
-                {(table.length !== 0) ?
-                    table.map((currency: Currency) => <TRow {...currency} />) :
-                    <tr><td>zavne vysledky</td></tr>}
-            </tbody>
-        </Table>
+        <TableCurrencies header={header} table={table} />
     </Row>)
 }
 export default Body
