@@ -1,8 +1,8 @@
 # Currency conversion app via CNB API
 
-React (TypeScript) web application focused on providing a information and simple conversions between currencies based on Czech National Bank rates. 
+React (TypeScript) web application focused on providing information and simple conversions between currencies based on Czech National Bank rates. 
 
-## Tech Stack
+## Tech Stack Frontend
 The frontend is using these tools:
 - React 18.2 (w/ TypeScript),
 - Reactstrap,
@@ -11,7 +11,7 @@ The frontend is using these tools:
 
 ## Running application for preview
 - Interview application http://momence.stkl.cz
-- Proxy to circumvent CORS from CNB http://cors-proxy.stkl.cz
+- Proxy to circumvent CORS on frontend http://cors-proxy.stkl.cz (used in HTTP GET calls)
 
 ## Run application locally - use this GitHub repository
 ```bash
@@ -22,10 +22,10 @@ npm start
 
 ## Aplication overview
 - We use **Reactstrap** becuase it's industry status quo.
-- Proxying API call https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt - not accessible on frontend due to CORS restrictions on broweser side. We do have to tunnel request via proxy (cors-proxy) and add header `Access-Control-Allow-Origin: *` on our backend while rewrapping and forwarding the reponse.
-- In useEffect() do proxied call via. Axios, proceed with parsing, preparations and storing. Following data is then stored `[{Currency}, {Currency}, ...]`
+- Proxying API call https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt - not accessible on frontend due to CORS restrictions on browser side. We do have to tunnel request via proxy (cors-proxy) and add header `Access-Control-Allow-Origin: *` on our backend while rewrapping and forwarding CNB's reponses.
+- In useEffect() do proxied call via. Axios, proceed to parsing, preparations and storing. Fetched data is then stored as `[{Currency}, {Currency}, ...]` for table row components.
 - We store data via **Redux** to access storage in a imperative way and avoid storage problems that might emerge. 
-- TypeScript Interface for **Currency**.
+- Custom TypeScript Interface for **Currency**.
 
 ## Production notes
 Dockerfile
