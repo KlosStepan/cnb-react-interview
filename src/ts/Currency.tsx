@@ -1,4 +1,4 @@
-type Currency = {
+interface Currency {
     country: string
     currency: string
     amount: number
