@@ -11,7 +11,7 @@ export const currenciesReducer = (state = initialState, { type, payload }) => {
         case ActionTypes.SET_HEADER:
             return { ...state, header: payload };
         case ActionTypes.SET_BODY:
-            return { ...state, header: payload };
+            return { ...state, table: payload };
         default:
             return state;
     }
