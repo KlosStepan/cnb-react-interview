@@ -16,7 +16,7 @@ npm start
 ```
 
 ## Aplication overview
-- API https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt is not accessible on frontend due to CORS restrictions. We have to tunnel the GET via proxy (cors-proxy.stkl.cz) and add header `Access-Control-Allow-Origin: *` on our backend to the reponse.
+- Proxying API call https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt - not accessible on frontend due to CORS restrictions. We have to tunnel request via proxy (cors-proxy.stkl.cz) and add header `Access-Control-Allow-Origin: *` on our backend to the rewrapped reponse.
 - In useEffect() do proxied call, proceed with parsing and preparations.
 - TS type **Currency**.
 
