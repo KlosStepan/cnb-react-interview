@@ -7,32 +7,36 @@ import axios from 'axios';
 
 import URLEndPoint from './misc/URLEndPoint';
 import URLProxyPoint from './misc/URLProxyPoint';
+
 function App() {
   async function FetchData() {
     axios.get(URLProxyPoint, { headers: { 'Target-URL': URLEndPoint } })
       .then(function (response) {
         //console.log(response.data)
-        ParseAndPrepareData(response.data);
+        ParseAndStore(response.data);
       })
       .catch(function (error) {
         console.log(error);
       })
   }
-  function ParseAndPrepareData(respdata: string) {
+  function ParseAndStore(respdata: string) {
     const result = respdata.split(/\r?\n/);
-    //console.log(result.slice(1));
-    //result(1) -> header
-    //res(2+) -> other
+    const initInfo = result.at(0);
+    //info # - initInfo - txt
+    console.log(initInfo)
+    result.shift();
     console.log(result);
-    //.slice(2)
-    result.map((res: string) => {
-      let spl = res.split('|');
-      console.log(spl);
-    })
-    //let slicedReducedStuff =
-    //1 datum
-    //2 header
-    //last drop - or if not null to <Line> cmp
+    let tableBody = result.map((res: any) => res.split('|'));
+    const tableHeader = tableBody.at(0);
+    //info #1 - tableHeader - list of 5
+    console.log(tableHeader);
+    tableBody.shift();
+    if (tableBody[tableBody.length - 1].at(0) === "") {
+      console.log("ano, last [\"\"] removing last")
+      tableBody = tableBody.slice(0, -1)
+    }
+    //info #2 - tableBody - list of [5 strings]
+    console.log(tableBody);
   }
   useEffect(() => {
     FetchData();
