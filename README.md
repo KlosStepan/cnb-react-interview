@@ -9,7 +9,7 @@ The frontend is using these tools:
 - Axios,
 - Redux 4.2.
 
-## Running Application Live For Preview
+## Running Application - Live Preview
 - Interview application running on http://momence.stkl.cz.
 - Proxy to circumvent CORS on frontend (used in HTTP GET calls, read on) running on http://cors-proxy.stkl.cz.
 
@@ -25,7 +25,7 @@ npm start
 - Proxying API call https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt - not accessible on frontend due to CORS restrictions on browser side. We do have to tunnel request via proxy (cors-proxy) and add header `Access-Control-Allow-Origin: *` on our backend while rewrapping and forwarding CNB's reponses.
 - In useEffect() do proxied call via. Axios, proceed to parsing, preparations and storing. Fetched data is then stored as `[{Currency}, {Currency}, ...]` for table row components.
 - Extensive use of array arrow functions for convenience and elegance `{list.map=>((curr: Currency)=> <Comp curr.sth.../>)}`.
-- We store data via **Redux** to access storage in a imperative way and avoid storage problems that might emerge. 
+- We store data via **Redux** to access storage in declarative way and avoid storage problems that might emerge. 
 - Custom TypeScript Interface for **Currency**.
 
 ## Production Notes
