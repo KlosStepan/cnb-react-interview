@@ -13,8 +13,8 @@ function TableCurrencies(props: any) {
         </thead>
         <tbody>
             {(typeof (props.table) !== 'undefined' && props.table !== null)
-                ? props.table.map((currency: Currency) => <TRow key={currency.code} {...currency} />) :
-                <tr><td>zadne vysledky</td></tr>}
+                ? props.table.map((currency: Currency) => <TRow key={currency.code} {...currency} />)
+                : <tr><td>zadne vysledky</td></tr>}
         </tbody>
     </Table>)
 }
