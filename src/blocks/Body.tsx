@@ -1,32 +1,37 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     Col, Container,
     Dropdown, DropdownToggle, DropdownMenu, DropdownItem,
     Modal, ModalBody, ModalHeader,
-    Input, Row, Table
+    Input, Row
 } from 'reactstrap';
 import TableCurrencies from '../components/TableCurrencies';
-import TRow from '../components/TRow';
 import { useSelector } from 'react-redux';
 import Currency from '../ts/Currency';
+
 function Body() {
     //Modal stuff
     const [isOpen, setIsOpen] = useState(false)
-
     //Dropdowns
     const [ddOneFrom, setDdOneFrom] = useState("CZK")
     //const [isDdOneOpen, setIsDdOneOpen] = useState(false)
     const [ddTwoTo, setDdTwoTo] = useState("To Currency")
     const [isDdTwoOpen, setIsDdTwoOpen] = useState(false)
-
     //Calculation variables
-    const [amount, setAmount] = useState(0);
-    const [rate, setRate] = useState(0);
+    const [amountCZK, setAmountCZK] = useState(0);
     const [result, setResult] = useState(0);
     function calculatePrice() {
-        console.log("CZK to " + ddTwoTo)
-        console.log("retrieving rate, setRate()")
-        console.log("calculating price amount*rate, setResult()")
+        let _currency: Currency = (table.find((curr: Currency) => curr.code === ddTwoTo))
+        //console.log("_currency")
+        //console.log(_currency);
+        let _rate = _currency?.rate
+        //console.log(_rate)
+        //console.log("_rate")
+        let _amount = _currency?.amount
+        //console.log(_amount)
+        //console.log("_amount")
+        let _result: any = (amountCZK / (_rate / _amount)).toFixed(4);
+        setResult(_result);
     }
 
     //Data from Redux 
@@ -72,11 +77,9 @@ function Body() {
                                     {ddTwoTo} &nbsp;
                                 </DropdownToggle>
                                 <DropdownMenu>
-                                    <DropdownItem onClick={() => { setDdTwoTo("USD") }}>USD</DropdownItem>
-                                    <DropdownItem onClick={() => { setDdTwoTo("CAD") }}>CAD</DropdownItem>
-                                    <DropdownItem onClick={() => { setDdTwoTo("BGL") }}>BGL</DropdownItem>
-                                    <DropdownItem onClick={() => { setDdTwoTo("EUR") }}>EUR</DropdownItem>
-                                    <DropdownItem onClick={() => { setDdTwoTo("HUF") }}>HUF</DropdownItem>
+                                    {(table.length !== 0)
+                                        ? table.map((curr: Currency) => <DropdownItem onClick={() => { setDdTwoTo(curr.code) }}>{curr.code}</DropdownItem>)
+                                        : <span>n/a</span>}
                                 </DropdownMenu>
                             </Dropdown>
                         </Col>
@@ -84,8 +87,8 @@ function Body() {
                     <Row>
                         <Col className="bg-light border">
                             <Input
-                                value={(amount) ? amount : 0}
-                                onChange={(e: any) => { setAmount(e.target.value); console.log(e.target.value) }} />
+                                value={(amountCZK) ? amountCZK : ""}
+                                onChange={(e: any) => { setAmountCZK(e.target.value); console.log(e.target.value) }} />
                         </Col>
                         <Col className="bg-light border">
                             <span className={'btnStyle'} onClick={() => { calculatePrice(); }}>Calc. -&#62;</span>

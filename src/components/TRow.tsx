@@ -1,6 +1,7 @@
 import Currency from '../ts/Currency';
 
 function TRow(currency: Currency) {
+    //console.log("currency")
     //console.log(currency)
     return (<tr>
         <td>{currency.country}</td>
