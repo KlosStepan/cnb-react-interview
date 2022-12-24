@@ -1,4 +1,4 @@
-# Currency conversion app via CNB API
+# Currency conversion app using CNB API
 
 React (TypeScript) web application focused on providing information and simple conversions between currencies based on Czech National Bank rates. 
 
@@ -9,18 +9,18 @@ The frontend is using these tools:
 - Axios,
 - Redux 4.2.
 
-## Running application for preview
-- Interview application http://momence.stkl.cz
-- Proxy to circumvent CORS on frontend http://cors-proxy.stkl.cz (used in HTTP GET calls)
+## Running Application Live For Preview
+- Interview application running on http://momence.stkl.cz.
+- Proxy to circumvent CORS on frontend (used in HTTP GET calls, read on) running on http://cors-proxy.stkl.cz.
 
-## Run application locally - use this GitHub repository
+## Run Application Locally (via this GitHub repository)
 ```bash
 git clone https://github.com/KlosStepan/cnb-react-interview
 npm install
 npm start
 ```
 
-## Aplication overview
+## Aplication Key Takeaways Overview
 - We use **Reactstrap**  - grid(Row, Col, Container), Modal, Dropdown, Input etc. becuase it's industry status quo ([maybe I'm a boomer though](https://mui.com)).
 - Proxying API call https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt - not accessible on frontend due to CORS restrictions on browser side. We do have to tunnel request via proxy (cors-proxy) and add header `Access-Control-Allow-Origin: *` on our backend while rewrapping and forwarding CNB's reponses.
 - In useEffect() do proxied call via. Axios, proceed to parsing, preparations and storing. Fetched data is then stored as `[{Currency}, {Currency}, ...]` for table row components.
@@ -28,7 +28,7 @@ npm start
 - We store data via **Redux** to access storage in a imperative way and avoid storage problems that might emerge. 
 - Custom TypeScript Interface for **Currency**.
 
-## Production notes
+## Production Notes
 Dockerfile
 ```Dockerfile
 FROM node as build

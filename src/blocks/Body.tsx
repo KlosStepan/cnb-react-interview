@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
     Col, Container,
     Dropdown, DropdownToggle, DropdownMenu, DropdownItem,
@@ -38,9 +38,7 @@ function Body() {
     const date = useSelector((state: any) => state.currencies.date)
     const header = useSelector((state: any) => state.currencies.header)
     const table = useSelector((state: any) => state.currencies.table)
-    useEffect(() => {
-        console.log("useEffect()")
-    }, [])
+
     return (<Row className={'itemWrapper'}>
         <span>|BODY|</span>
         <span>
@@ -78,7 +76,7 @@ function Body() {
                                 </DropdownToggle>
                                 <DropdownMenu>
                                     {(table.length !== 0)
-                                        ? table.map((curr: Currency) => <DropdownItem onClick={() => { setDdTwoTo(curr.code) }}>{curr.code}</DropdownItem>)
+                                        ? table.map((curr: Currency) => <DropdownItem key={curr.code} onClick={() => { setDdTwoTo(curr.code) }}>{curr.code}</DropdownItem>)
                                         : <span>n/a</span>}
                                 </DropdownMenu>
                             </Dropdown>
