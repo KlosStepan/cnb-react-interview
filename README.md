@@ -1,7 +1,7 @@
 # Currency conversion app using CNB API
 
 React (TypeScript) web application focused on providing information and simple conversions between currencies based on Czech National Bank rates. 
-
+![Screen from running app](screen-running-app.png "screen-running-app")
 ## Tech Stack Frontend
 The frontend is using these tools:
 - React 18.2 (w/ TypeScript),
