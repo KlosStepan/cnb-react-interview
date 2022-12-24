@@ -46,7 +46,7 @@ function Body() {
             toggle={() => setIsOpen(!isOpen)}
             modalTransition={{ timeout: 200 }}>
             <ModalHeader>
-                <span>Forein Exchange Calculator</span>
+                <span>Foreign Exchange Calculator</span>
             </ModalHeader>
             <ModalBody>
                 <Container>
