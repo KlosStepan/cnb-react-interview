@@ -21,9 +21,10 @@ npm start
 ```
 
 ## Aplication overview
-- We use **Reactstrap** becuase it's industry status quo.
+- We use **Reactstrap**  - grid(Row, Col, Container), Modal, Dropdown, Input etc. becuase it's industry status quo ([maybe I'm a boomer though](https://mui.com)).
 - Proxying API call https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt - not accessible on frontend due to CORS restrictions on browser side. We do have to tunnel request via proxy (cors-proxy) and add header `Access-Control-Allow-Origin: *` on our backend while rewrapping and forwarding CNB's reponses.
 - In useEffect() do proxied call via. Axios, proceed to parsing, preparations and storing. Fetched data is then stored as `[{Currency}, {Currency}, ...]` for table row components.
+- Extensive use of array arrow functions for convenience and elegance `{list.map=>((curr: Currency)=> <Comp curr.sth.../>)}`.
 - We store data via **Redux** to access storage in a imperative way and avoid storage problems that might emerge. 
 - Custom TypeScript Interface for **Currency**.
 
