@@ -3,8 +3,6 @@ import { Table } from 'reactstrap';
 import TRow from './TRow';
 
 function TableCurrencies(props: any) {
-    //console.log("props")
-    //console.log(props)
     return (<Table striped hover>
         <thead>
             <tr>

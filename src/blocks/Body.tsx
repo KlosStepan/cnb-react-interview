@@ -12,24 +12,20 @@ import Currency from '../ts/Currency';
 function Body() {
     //Modal stuff
     const [isOpen, setIsOpen] = useState(false)
+
     //Dropdowns
     const [ddOneFrom, setDdOneFrom] = useState("CZK")
     //const [isDdOneOpen, setIsDdOneOpen] = useState(false)
     const [ddTwoTo, setDdTwoTo] = useState("To Currency")
     const [isDdTwoOpen, setIsDdTwoOpen] = useState(false)
+
     //Calculation variables
     const [amountCZK, setAmountCZK] = useState(0);
     const [result, setResult] = useState(0);
     function calculatePrice() {
         let _currency: Currency = (table.find((curr: Currency) => curr.code === ddTwoTo))
-        //console.log("_currency")
-        //console.log(_currency);
         let _rate = _currency?.rate
-        //console.log(_rate)
-        //console.log("_rate")
         let _amount = _currency?.amount
-        //console.log(_amount)
-        //console.log("_amount")
         let _result: any = (amountCZK / (_rate / _amount)).toFixed(4);
         setResult(_result);
     }
@@ -86,7 +82,7 @@ function Body() {
                         <Col className="bg-light border">
                             <Input
                                 value={(amountCZK) ? amountCZK : ""}
-                                onChange={(e: any) => { setAmountCZK(e.target.value); console.log(e.target.value) }} />
+                                onChange={(e: any) => { setAmountCZK(e.target.value) }} />
                         </Col>
                         <Col className="bg-light border">
                             <span className={'btnStyle'} onClick={() => { calculatePrice(); }}>Calc. -&#62;</span>
