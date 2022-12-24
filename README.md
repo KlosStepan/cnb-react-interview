@@ -85,5 +85,9 @@ spec:
         - name: MESSAGE
           value: Hello from momence Deployment!
 ```
+Run to deploy
+```zsh
+kubectl apply -f app-momence.yaml
+```
 Running Deployments in our Kubernetes Cluster
 ![DOKS Cluster design](screen-running-deployments.png "doks-cluster-design")
